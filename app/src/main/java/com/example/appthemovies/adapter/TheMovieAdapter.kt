@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.R
 import com.example.appthemovies.const.Layout
@@ -19,19 +20,20 @@ abstract class TheMovieAdapter(
     private val dataset = DataSource.filmes
 
     class TheMovieHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.panteraNegra)
+        val imageView: ImageView = view.findViewById(R.id.pantera_name)
+        val textView : TextView = view.findViewById(R.id.Name)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheMovieHolder {
         val adapterLayout = when (layout) {
-            Layout.VERTICAL -> {
+            Layout.HORIZONTAL -> {
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.vertical_list1, parent, false)
+                    .inflate(R.layout.horizontal_movie_item, parent, false)
             }
             else -> {
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.vertical_list1, parent, false)
+                    .inflate(R.layout.horizontal_movie_item, parent, false)
             }
         }
         return TheMovieHolder(adapterLayout)
@@ -41,9 +43,12 @@ abstract class TheMovieAdapter(
         val item = dataset[position]
 
         holder.imageView.setImageResource(item.imageResource)
+        holder.textView.text = item.name
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount(): Int {
+        return dataset.size
+    }
 }
 
 
