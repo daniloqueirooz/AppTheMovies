@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 
 data class Movie(
     @DrawableRes val imageResource: Int,
-    val name: String,
+    val nome: String,
     val auhtor: String?,
 
     )

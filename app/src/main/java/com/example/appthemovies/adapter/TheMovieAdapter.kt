@@ -11,7 +11,7 @@ import com.example.appthemovies.R
 import com.example.appthemovies.const.Layout
 import com.example.appthemovies.data.DataSource
 
-abstract class TheMovieAdapter(
+ class TheMovieAdapter(
     private val context: Context?,
     private val layout: Int
 
@@ -21,7 +21,7 @@ abstract class TheMovieAdapter(
 
     class TheMovieHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.pantera_name)
-        val textView : TextView = view.findViewById(R.id.Name)
+        val textView: TextView = view.findViewById(R.id.Name)
 
     }
 
@@ -29,7 +29,7 @@ abstract class TheMovieAdapter(
         val adapterLayout = when (layout) {
             Layout.HORIZONTAL -> {
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.horizontal_movie_item, parent, false)
+                    .inflate(R.layout.activity_main, parent, false)
             }
             else -> {
                 LayoutInflater.from(parent.context)
@@ -43,7 +43,7 @@ abstract class TheMovieAdapter(
         val item = dataset[position]
 
         holder.imageView.setImageResource(item.imageResource)
-        holder.textView.text = item.name
+        holder.textView.text = item.nome
     }
 
     override fun getItemCount(): Int {

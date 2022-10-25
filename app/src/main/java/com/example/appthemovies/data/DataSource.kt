@@ -8,9 +8,8 @@ object DataSource {
     val filmes: List<Movie> = listOf(
         Movie(
             R.drawable.panteranegra,
-            name = "Pantera Negra",
+            nome = "Pantera Negra",
             auhtor = "Mavel Studios",
         )
     )
 }
-
