@@ -21,7 +21,6 @@ class TheMovieAdapter(
 
     class TheMovieHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.image_movie)
-        val textView: TextView = view.findViewById(R.id.Name)
 
     }
 
@@ -42,14 +41,12 @@ class TheMovieAdapter(
     override fun onBindViewHolder(holder: TheMovieHolder, position: Int) {
         val item = dataset[position]
 
-        holder.imageView.setImageResource(item.imageResource)
-        holder.textView.text = item.nome
+        holder.imageView.setImageResource(item.imageResourceId)
     }
 
-    override fun getItemCount(): Int {
-        return dataset.size
-    }
+    override fun getItemCount() = dataset.size
 }
+
 
 
 

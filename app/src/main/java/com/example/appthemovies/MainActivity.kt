@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.horizontalRecyclerView.setHasFixedSize(true)
 
+        binding.verticalRecyclerView.setHasFixedSize(true)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }

@@ -7,19 +7,23 @@ object DataSource {
 
     val filmes: List<Movie> = listOf(
         Movie(
-            R.drawable.panteranegra,
-            nome = "Pantera Negra",
-            auhtor = "Mavel Studios",
+            R.drawable.panteranegra1,
         ),
         Movie(
-            R.drawable.panteranegra,
-            nome = "Guerra Infinita",
-            auhtor = "Mavel Studios",
+            R.drawable.thor,
         ),
         Movie(
-            R.drawable.panteranegra,
-            nome = "Adão Negro",
-            auhtor = "Mavel Studios",
+            R.drawable.adaonegro2022,
+        ),
+        Movie(
+            R.drawable.thoramoretrovao,
+        ),
+        Movie(
+            R.drawable.anao,
+        ),
+
+
         )
-    )
+
+
 }
