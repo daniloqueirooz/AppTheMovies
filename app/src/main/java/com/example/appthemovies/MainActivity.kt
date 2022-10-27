@@ -18,8 +18,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.hide()
 
         binding.horizontalRecyclerView.adapter = TheMovieAdapter(
-            applicationContext,
+            this,
             Layout.HORIZONTAL
+        )
+        binding.verticalRecyclerView.adapter = TheMovieAdapter(
+            this,
+            Layout.VERTICAL
         )
 
         binding.horizontalRecyclerView.setHasFixedSize(true)

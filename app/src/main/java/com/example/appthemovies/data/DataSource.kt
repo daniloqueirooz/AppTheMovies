@@ -10,6 +10,16 @@ object DataSource {
             R.drawable.panteranegra,
             nome = "Pantera Negra",
             auhtor = "Mavel Studios",
+        ),
+        Movie(
+            R.drawable.panteranegra,
+            nome = "Guerra Infinita",
+            auhtor = "Mavel Studios",
+        ),
+        Movie(
+            R.drawable.panteranegra,
+            nome = "Adão Negro",
+            auhtor = "Mavel Studios",
         )
     )
 }
