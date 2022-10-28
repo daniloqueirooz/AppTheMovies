@@ -21,6 +21,8 @@ class TheMovieAdapter(
 
     class TheMovieHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.image_movie)
+        val em_exibicao: TextView = view.findViewById(R.id.Exebicao)
+        val avaliados: TextView = view.findViewById(R.id.Avaliados)
 
     }
 
@@ -40,6 +42,9 @@ class TheMovieAdapter(
 
     override fun onBindViewHolder(holder: TheMovieHolder, position: Int) {
         val item = dataset[position]
+
+        holder.em_exibicao.text = item.Exibicao
+        holder.avaliados.text = item.Avaliados
 
         holder.imageView.setImageResource(item.imageResourceId)
     }
