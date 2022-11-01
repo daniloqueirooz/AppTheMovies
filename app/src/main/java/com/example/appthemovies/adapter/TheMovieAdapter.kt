@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.R
 import com.example.appthemovies.const.Layout
+import com.example.appthemovies.const.Layout.HORIZONTAL
+import com.example.appthemovies.const.Layout.VERTICAL
 import com.example.appthemovies.data.DataSource
 
 class TheMovieAdapter(
@@ -21,6 +23,8 @@ class TheMovieAdapter(
 
     class TheMovieHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.image_movie)
+        val textView1: TextView = view.findViewById(R.id.Avaliados)
+        val TextView2: TextView = view.findViewById(R.id.Name)
 
 
     }
@@ -43,7 +47,19 @@ class TheMovieAdapter(
         val item = dataset[position]
 
 
+        if (layout == VERTICAL) {
+            holder.textView1.text = "Em breve"
+
+        } else {
+           holder.textView1.text = "Tendência agora"
+
+        }
+
+
+        holder.TextView2.text = item.nome
         holder.imageView.setImageResource(item.imageResourceId)
+
+
     }
 
     override fun getItemCount() = dataset.size
