@@ -17,18 +17,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
 
-        binding.horizontalRecyclerView.adapter = TheMovieAdapter(
-            this,
-            Layout.HORIZONTAL
-        )
-        binding.verticalRecyclerView.adapter = TheMovieAdapter(
-            this,
-            Layout.VERTICAL
-        )
+        binding.apply {
 
-        binding.horizontalRecyclerView.setHasFixedSize(true)
+            horizontalRecyclerView.adapter = TheMovieAdapter(
+                Layout.HORIZONTAL
+            )
+            verticalRecyclerView.adapter = TheMovieAdapter(
+                Layout.VERTICAL
+            )
 
-        binding.verticalRecyclerView.setHasFixedSize(true)
+            horizontalRecyclerView.setHasFixedSize(true)
+
+            verticalRecyclerView.setHasFixedSize(true)
+        }
+
+
+
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

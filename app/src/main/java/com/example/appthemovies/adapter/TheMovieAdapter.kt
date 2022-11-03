@@ -9,12 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.R
 import com.example.appthemovies.const.Layout
-import com.example.appthemovies.const.Layout.HORIZONTAL
 import com.example.appthemovies.const.Layout.VERTICAL
 import com.example.appthemovies.data.DataSource
 
 class TheMovieAdapter(
-    private val context: Context?,
+
     private val layout: Int
 
 ) : RecyclerView.Adapter<TheMovieAdapter.TheMovieHolder>() {
@@ -43,26 +42,27 @@ class TheMovieAdapter(
         return TheMovieHolder(adapterLayout)
     }
 
+
     override fun onBindViewHolder(holder: TheMovieHolder, position: Int) {
         val item = dataset[position]
+        holder.itemView.apply {
 
+            if (item.id == 1) {
+                if (layout == VERTICAL) {
+                    holder.textView1.text = resources.getString(R.string.titulo_filmes_embreve)
 
-        if (layout == VERTICAL) {
-            holder.textView1.text = "Em breve"
+                } else {
+                    holder.textView1.text = resources.getString(R.string.titulo_filmes_tendencia)
 
-        } else {
-           holder.textView1.text = "Tendência agora"
-
+                }
+            }
         }
-
-
         holder.TextView2.text = item.nome
         holder.imageView.setImageResource(item.imageResourceId)
-
-
     }
 
     override fun getItemCount() = dataset.size
+
 }
 
 

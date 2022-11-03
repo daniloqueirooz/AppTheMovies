@@ -41,7 +41,6 @@
         android:id="@+id/horizontal_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:itemCount="7"
         android:layout_marginTop="55dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -55,7 +54,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vertical_recycler_view"
         android:layout_width="match_parent"
-        tools:itemCount="7"
         android:layout_height="match_parent"
         android:layout_marginTop="390dp"
         android:orientation="vertical"
