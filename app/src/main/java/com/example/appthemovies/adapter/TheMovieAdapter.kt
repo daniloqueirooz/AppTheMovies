@@ -14,7 +14,7 @@ import com.example.appthemovies.data.DataSource
 
 class TheMovieAdapter(
 
-    private val layout: Int
+    private var layout: Int
 
 ) : RecyclerView.Adapter<TheMovieAdapter.TheMovieHolder>() {
 
