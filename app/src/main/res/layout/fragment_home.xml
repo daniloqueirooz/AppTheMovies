@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:name="androidx.navigation.fragment.NavHostFragment"
-    android:id="@+id/nav_graph"
-    android:layout_width="0dp"
-    android:layout_height="0dp">
-
+    android:background="#1C1A29"
+    tools:context=".HomeFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
 
     <TextView
         android:id="@+id/top10"
@@ -63,4 +65,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-</androidx.fragment.app.FragmentContainerView>
+</FrameLayout>

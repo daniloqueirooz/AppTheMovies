@@ -1,40 +1,34 @@
 package com.example.appthemovies
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.appthemovies.adapter.TheMovieAdapter
-import com.example.appthemovies.const.Layout
-
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.appthemovies.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         supportActionBar!!.hide()
 
-        binding.apply {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-            horizontalRecyclerView.adapter = TheMovieAdapter(
-                Layout.HORIZONTAL
-            )
-            verticalRecyclerView.adapter = TheMovieAdapter(
-                Layout.VERTICAL
-            )
+        navController = navHostFragment.navController
 
-            horizontalRecyclerView.setHasFixedSize(true)
-
-            verticalRecyclerView.setHasFixedSize(true)
-        }
+        setupActionBarWithNavController(navController)
+    }
 
 
-
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
