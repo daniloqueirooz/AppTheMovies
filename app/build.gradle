@@ -58,11 +58,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     //noinspection GradleDependency
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    // Jetpack Compose Integration
+
     //noinspection GradleDependency
     implementation "androidx.navigation:navigation-compose:$nav_version"
-    // Testing Navigation
-    //noinspection GradleDependency
+
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
 
