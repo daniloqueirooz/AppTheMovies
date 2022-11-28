@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.verticalRecyclerView
+        recyclerView = binding.horizontalRecyclerView
         chooseLayout()
     }
 

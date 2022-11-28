@@ -1,11 +1,14 @@
 package com.example.appthemovies.adapter
 
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.HomeFragmentDirections
@@ -24,25 +27,20 @@ class TheMovieAdapter(
     private val dataset = DataSource.filmes
 
     class TheMovieHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.image_movie)
+        val imageView: ImageView = view.findViewById<ImageView>(R.id.image_movie)
         val textView1: TextView = view.findViewById(R.id.Avaliados)
         val TextView2: TextView = view.findViewById(R.id.Name)
+    }
 
+    override fun getItemCount(): Int {
+        return dataset.size
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheMovieHolder {
-        val adapterLayout = when (layout) {
-            Layout.HORIZONTAL -> {
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.horizontal_movie_item, parent, false)
-            }
-            else -> {
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.horizontal_movie_item, parent, false)
-            }
-        }
-        return TheMovieHolder(adapterLayout)
+        val layout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.horizontal_movie_item, parent, false)
+        return TheMovieHolder(layout)
     }
 
 
@@ -69,11 +67,6 @@ class TheMovieAdapter(
         holder.view.findNavController().navigate(action)
     }
 
-
-    override fun getItemCount(): Int {
-        return dataset.size
-
-    }
 }
 
 
