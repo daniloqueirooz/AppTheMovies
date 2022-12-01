@@ -62,9 +62,9 @@ class TheMovieAdapter(
         }
         holder.TextView2.text = item.nome
         holder.imageView.setImageResource(item.imageResourceId)
-        val action =
-            HomeFragmentDirections.actionHomeFragmentToMovieDetails(details = holder.imageView.toString())
-        holder.view.findNavController().navigate(action)
+       // val action =
+           // HomeFragmentDirections.actionHomeFragmentToMovieDetails(details = holder.imageView.toString())
+       // holder.view.findNavController().navigate(action)
     }
 
 }

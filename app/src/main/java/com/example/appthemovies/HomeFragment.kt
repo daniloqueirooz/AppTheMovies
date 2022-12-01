@@ -2,64 +2,46 @@ package com.example.appthemovies
 
 
 import android.os.Bundle
+
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.databinding.FragmentHomeBinding
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.example.appthemovies.adapter.TheMovieAdapter
+import com.example.appthemovies.const.Layout
 
 
-class HomeFragment : Fragment() {
+// eu vou criar uma função nova para isolar o click da imagem e passar o argumento para a movie details
+
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var _binding: FragmentHomeBinding? = null
 
+
     private val binding get() = _binding!!
 
-    private lateinit var recyclerView: RecyclerView
-
-    private var isLinearLayoutManager = true
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return view
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.verticalRecyclerView
-        recyclerView = binding.horizontalRecyclerView
-        chooseLayout()
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentHomeBinding.bind(view)
+        setupListMovie()
+
     }
 
+    private fun setupListMovie() {
+        binding.apply {
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+            horizontalRecyclerView.adapter = TheMovieAdapter(
+                Layout.HORIZONTAL
+            )
+            verticalRecyclerView.adapter = TheMovieAdapter(
+                Layout.VERTICAL
+            )
 
+            horizontalRecyclerView.setHasFixedSize(true)
 
-    private fun chooseLayout() {
-        if (isLinearLayoutManager) {
-            recyclerView.layoutManager = LinearLayoutManager(context)
-        } else {
-            recyclerView.layoutManager = GridLayoutManager(context, 4)
-
-
+            verticalRecyclerView.setHasFixedSize(true)
         }
 
     }
-
 
 }
