@@ -1,17 +1,23 @@
 package com.example.appthemovies
 
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
+import com.example.appthemovies.databinding.FragmentMovieDetailsBinding
 
 class MovieDetails : Fragment() {
 
-    // fazer a mesma coisa com o R.layout que eu fiz no HomeFragment
-    // eu vou precisar fazer o binding
-    // eu vou precisar criar o onCreated
-    // isso aqui eu faço em no máximo 30 minutos
+    private var _binding: FragmentMovieDetailsBinding? = null
 
-    // dica: é praticamente a mesma coisa do HomeFragment sem o adapter
+    private val binding get() = _binding!!
 
 
-    // depois disso a única coisa que falta é aprender a puxar o argumento e (imagem do filme)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentMovieDetailsBinding.bind(view)
+
+
+    }
+
 }
