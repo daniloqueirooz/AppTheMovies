@@ -2,10 +2,12 @@ package com.example.appthemovies
 
 
 import android.os.Bundle
+import android.telecom.Call.Details
 
 import androidx.fragment.app.Fragment
 import com.example.appthemovies.databinding.FragmentHomeBinding
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.appthemovies.adapter.TheMovieAdapter
 import com.example.appthemovies.const.Layout
 
@@ -24,7 +26,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
         setupListMovie()
+        SetupClick()
 
+    }
+
+    private fun SetupClick() {
+        binding.apply {
+            horizontalRecyclerView.setOnClickListener {
+                Details -> val actions = HomeFragmentDirections.actionHomeFragmentToMovieDetails(details = String())
+                findNavController().navigate(actions)
+            }
+        }
     }
 
     private fun setupListMovie() {
@@ -43,5 +55,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
     }
+
 
 }
