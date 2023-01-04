@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.R
 import com.example.appthemovies.const.Layout.VERTICAL
 import com.example.appthemovies.data.DataSource
+import com.example.appthemovies.model.Movie
 
 
 class TheMovieAdapter(
 
-    private val layout: Int
+    private val layout: Int = 1
 
 ) : RecyclerView.Adapter<TheMovieAdapter.TheMovieHolder>() {
 
@@ -50,16 +51,27 @@ class TheMovieAdapter(
                 } else {
                     holder.textView1.text =
                         resources.getString(R.string.titulo_filmes_tendencia)
-
                 }
             }
         }
         holder.TextView2.text = item.nome
         holder.imageView.setImageResource(item.imageResourceId)
-       // val action =
-           // HomeFragmentDirections.actionHomeFragmentToMovieDetails(details = holder.imageView.toString())
-       // holder.view.findNavController().navigate(action)
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let {
+                it(item)
+            }
+        }
+
     }
+
+    private var onItemClickListener: ((Movie) -> Unit)? = null
+
+    fun setOnClickListener(listener: (Movie) -> Unit) {
+        onItemClickListener = listener
+
+    }
+
 
 }
 

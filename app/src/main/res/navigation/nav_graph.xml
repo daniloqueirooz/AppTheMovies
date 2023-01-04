@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_movie_details" >
         <argument
             android:name="details"
-            app:argType="string" />
+            app:argType= "integer" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
