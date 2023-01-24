@@ -4,6 +4,7 @@ package com.example.appthemovies.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,11 +14,8 @@ import com.example.appthemovies.data.DataSource
 import com.example.appthemovies.model.Movie
 
 
-class TheMovieAdapter(
-
-    private val layout: Int = 1
-
-) : RecyclerView.Adapter<TheMovieAdapter.TheMovieHolder>() {
+class TheMovieAdapter(private val layout: Int = 1, val onItemClick: (Movie) -> Unit) :
+    RecyclerView.Adapter<TheMovieAdapter.TheMovieHolder>() {
 
     private val dataset = DataSource.filmes
 
@@ -58,19 +56,13 @@ class TheMovieAdapter(
         holder.imageView.setImageResource(item.imageResourceId)
 
         holder.itemView.setOnClickListener {
-            onItemClickListener?.let {
-                it(item)
-            }
+            onItemClick(item)
+
         }
 
     }
 
-    private var onItemClickListener: ((Movie) -> Unit)? = null
 
-    fun setOnClickListener(listener: (Movie) -> Unit) {
-        onItemClickListener = listener
-
-    }
 
 
 }

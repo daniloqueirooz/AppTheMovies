@@ -4,14 +4,10 @@ package com.example.appthemovies
 import android.os.Bundle
 import com.example.appthemovies.databinding.FragmentHomeBinding
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.adapter.TheMovieAdapter
 import com.example.appthemovies.const.Layout
 
-
-// eu vou criar uma função nova para isolar o click da imagem e passar o argumento para a movie details
 
 class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
 
@@ -20,14 +16,13 @@ class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
 
     private val binding get() = _binding!!
 
-    private val theMovieAdapter = TheMovieAdapter()
+    private lateinit var theMovieAdapter: TheMovieAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
         setupListMovie()
-        setupClickFilmes()
 
 
     }
@@ -37,10 +32,21 @@ class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
 
             horizontalRecyclerView.adapter = TheMovieAdapter(
                 Layout.HORIZONTAL
-            )
+            ) {
+
+                val actions =
+                    HomeFragmentDirections.actionHomeFragmentToMovieDetails(it.imageResourceId)
+                findNavController().navigate(actions)
+            }
             verticalRecyclerView.adapter = TheMovieAdapter(
                 Layout.VERTICAL
             )
+            {
+                val actions =
+                    HomeFragmentDirections.actionHomeFragmentToMovieDetails(it.imageResourceId)
+                findNavController().navigate(actions)
+
+            }
 
             horizontalRecyclerView.setHasFixedSize(true)
 
@@ -48,28 +54,5 @@ class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
         }
 
     }
-
-    private fun setupClickFilmes() {
-        theMovieAdapter.setOnClickListener { Movie ->
-            val actions =
-                HomeFragmentDirections.actionHomeFragmentToMovieDetails(Movie.imageResourceId)
-            findNavController().navigate(actions)
-
-            val text = "Hello toast!"
-            val duration = Toast.LENGTH_SHORT
-
-            val toast = Toast.makeText(context, text, duration)
-            toast.show()
-
-
-        }
-
-
-    }
 }
-
-
-
-
-
 
