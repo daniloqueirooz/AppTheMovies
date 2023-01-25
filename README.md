@@ -2,7 +2,7 @@
 
 ### **Visão geral - Sobre este projeto**
 
-Este é um clone do meu projeto simples no qual eu desenvolvi com a ideia de aprender mais sobre RecyclerView, Adapter, Fragment e Navigation. 
+Este é um projeto simples no qual eu desenvolvi com a ideia de aprender mais sobre RecyclerView, Adapter, Fragment, Navigation e ViewModel;
 
 O projeto me dará a base para eu criar um novo Aplicativo parecido com a interface da Netflix consumindo uma Api pública e usando o RecyclerView.
 
