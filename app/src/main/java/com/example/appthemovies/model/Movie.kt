@@ -7,4 +7,6 @@ data class Movie(
     val nome: String,
     val id: Int,
 
-)
+) {
+
+}
