@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 enum class MovieApiStatus { LOADING, ERROR, DONE; }
 
 
-class HomeFragmentViewModel() : ViewModel() {
+class HomeFragmentViewModel : ViewModel() {
 
     private val _status = MutableLiveData<MovieApiStatus>()
 

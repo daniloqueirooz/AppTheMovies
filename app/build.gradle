@@ -46,54 +46,45 @@ android {
         testImplementation 'junit:junit:4.13.2'
         androidTestImplementation 'androidx.test.ext:junit:1.1.5'
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+        implementation 'androidx.appcompat:appcompat:1.6.1'
+        implementation 'com.google.android.material:material:1.8.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+        implementation 'androidx.core:core-ktx:1.9.0'
+        //noinspection GradleDependency
+        implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+        //noinspection GradleDependency
+        implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+        //noinspection GradleDependency
+        implementation "androidx.navigation:navigation-compose:$nav_version"
+
+        //noinspection GradleDependency
+        androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+        //Navigation
+        implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+        implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+        implementation 'com.google.android.material:material:1.8.0'
+
+        // Moshi
+        implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+
+        // Retrofit
+        implementation "com.squareup.retrofit2:retrofit:2.9.0"
+        // Retrofit with Moshi Converter
+        implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+
+        // Coil
+        implementation "io.coil-kt:coil:2.2.2"
+
+        //Glide
+        implementation 'com.github.bumptech.glide:glide:4.14.2'
+        kapt 'com.github.bumptech.glide:compiler:4.14.2'
+
+        //gson
+        implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
     }
-}
-
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.core:core-ktx:1.9.0'
-    //noinspection GradleDependency
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    //noinspection GradleDependency
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    //noinspection GradleDependency
-    implementation "androidx.navigation:navigation-compose:$nav_version"
-
-    //noinspection GradleDependency
-    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
-
-    //Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-
-    implementation 'com.google.android.material:material:1.8.0'
-
-    // Moshi
-    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
-
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-// Retrofit with Moshi Converter
-    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
-
-    // Coil
-    implementation "io.coil-kt:coil:2.2.2"
-
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
-    kapt 'com.github.bumptech.glide:compiler:4.14.2'
-
-    //gson
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-
-    // Java language implementation
-    implementation 'androidx.collection:collection:$collection_version'
-    // Kotlin
-    //noinspection GradleDependency
-    implementation 'androidx.collection:collection-ktx:$collection_version'
-
-
 }

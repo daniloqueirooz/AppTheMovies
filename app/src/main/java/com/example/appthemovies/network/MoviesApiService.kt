@@ -4,6 +4,7 @@ package com.example.appthemovies.network
 import com.example.appthemovies.model.MovieModel
 import com.example.appthemovies.utils.Constants.API_KEY
 import com.example.appthemovies.utils.Constants.BASE_URL
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
@@ -27,11 +28,5 @@ object MovieApi {
 
 
     }
-
-    fun getInstance(): MoviesApiService {
-        return retrofitService
-
-    }
-
 
 }

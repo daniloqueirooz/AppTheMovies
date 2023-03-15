@@ -3,7 +3,6 @@ package com.example.appthemovies.model
 import com.squareup.moshi.Json
 
 data class MovieModel(
-    val adult: Boolean,
     val backdrop_path: String,
     val belongs_to_collection: Any,
     val budget: Int,

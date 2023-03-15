@@ -5,7 +5,9 @@ import android.os.Bundle
 import com.example.appthemovies.databinding.FragmentHomeBinding
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.appthemovies.R
 import com.example.appthemovies.adapter.TheMovieAdapter
 import com.example.appthemovies.const.Layout
@@ -14,19 +16,18 @@ import com.example.appthemovies.const.Layout
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var _binding: FragmentHomeBinding? = null
-
-    private lateinit var binding: FragmentHomeBinding
-
+    private val binding get() = _binding!!
     private lateinit var viewModel: HomeFragmentViewModel
 
 
-    private lateinit var theMovieAdapter: TheMovieAdapter
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentHomeBinding.bind(view)
+        _binding = FragmentHomeBinding.bind(view)
+        viewModel =
+            ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
         setupListMovie()
+
     }
 
 
@@ -59,14 +60,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
 
-    private fun setupItensView(movieModel: MovieApiStatus) {
-        movieModel?.let {
-            binding.assistidos.text = movieModel.name
-        }
-    }
-
 
 }
+
+
+
 
 
 
