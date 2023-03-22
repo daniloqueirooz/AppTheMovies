@@ -1,71 +1,47 @@
 package com.example.appthemovies.adapter
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.appthemovies.R
-import com.example.appthemovies.const.Layout.VERTICAL
-import com.example.appthemovies.data.DataSource
-import com.example.appthemovies.model.Movie
+import com.example.appthemovies.models.Movie
+import kotlinx.android.synthetic.main.horizontal_movie_item.view.*
 
 
-class TheMovieAdapter(private val layout: Int = 1, val onItemClick: (Movie) -> Unit) :
-    RecyclerView.Adapter<TheMovieAdapter.TheMovieHolder>() {
+class TheMovieAdapter(
+    private val movies: List<Movie>
 
-    private val dataset = DataSource.filmes
-
-    class TheMovieHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.image_movie)
-        val textView1: TextView = view.findViewById(R.id.Avaliados)
-        val TextView2: TextView = view.findViewById(R.id.Name)
-    }
-
-    override fun getItemCount(): Int {
-        return dataset.size
-
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheMovieHolder {
-        val layout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.horizontal_movie_item, parent, false)
-        return TheMovieHolder(layout)
-    }
+) : RecyclerView.Adapter<TheMovieAdapter.MovieHolder>() {
 
 
-    override fun onBindViewHolder(holder: TheMovieHolder, position: Int) {
-        val item = dataset[position]
+    class MovieHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
 
-        holder.itemView.apply {
-
-            if (item.id == 1) {
-                if (layout == VERTICAL) {
-                    holder.textView1.text = resources.getString(R.string.titulo_filmes_embreve)
-
-                } else {
-                    holder.textView1.text =
-                        resources.getString(R.string.titulo_filmes_tendencia)
-                }
-            }
-        }
-        holder.TextView2.text = item.nome
-        holder.imageView.setImageResource(item.imageResourceId)
-
-        holder.itemView.setOnClickListener {
-            onItemClick(item)
-
+        fun bindMovie(movie: Movie) {
+            itemView.movie_title.text = movie.title
+            itemView.release_date.text = movie.release
+            Glide.with(itemView).load(IMAGE_BASE + movie.poster).into(itemView.movie_poster)
         }
 
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
+        return MovieHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.horizontal_movie_item, parent, false)
+        )
+    }
 
+    override fun onBindViewHolder(holder: MovieHolder, position: Int) {
+        holder.bindMovie(movies.get(position))
+    }
 
-
+    override fun getItemCount(): Int = movies.size
 }
+
+
 
 
 

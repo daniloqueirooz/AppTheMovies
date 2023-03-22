@@ -5,4 +5,9 @@
     <string name="titulo_filmes_tendencia">Tendêcia Agora</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="release_date">Release Date</string>
+    <string name="megan_filmes">Megan Filmes</string>
+    <string name="_100_tomato">100% Tomato</string>
+    <string name="titulo_filme">Titulo_Filme</string>
 </resources>
