@@ -2,6 +2,7 @@ package com.example.appthemovies.services
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class MovieApiService {
     companion object {
@@ -18,6 +19,8 @@ class MovieApiService {
             return retrofit!!
 
         }
+
     }
 
 }
+

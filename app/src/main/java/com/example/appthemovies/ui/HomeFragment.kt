@@ -4,6 +4,7 @@ package com.example.appthemovies.ui
 import android.os.Bundle
 import com.example.appthemovies.databinding.FragmentHomeBinding
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.example.appthemovies.R
 import com.example.appthemovies.adapter.TheMovieAdapter
 import com.example.appthemovies.models.Movie
@@ -22,25 +23,27 @@ class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
 
     private val binding get() = _binding!!
 
-    private lateinit var theMovieAdapter: TheMovieAdapter
+    private lateinit var viewModel: HomeFragmentViewModel
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
-        setupListMovie()
+        viewModel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
+
+        setupLisMovie()
 
         rv_movies_list.setHasFixedSize(true)
         getMovieData { movies: List<Movie> ->
             rv_movies_list.adapter = TheMovieAdapter(movies)
-
         }
     }
 
-    private fun setupListMovie() {
+    private fun setupLisMovie() {
         binding.apply {
-            // criar a navegação entre os fragments.
-        }
 
+            // rvMoviesList.adapter = TheMovieAdapter()
+        }
 
     }
 

@@ -25,9 +25,7 @@ class MovieDetails : Fragment(R.layout.fragment_movie_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMovieDetailsBinding.bind(view)
-      //  binding.imageFilme.setImageResource(args.details)
-
-
+        binding.imageFilme.setImageResource(args.details)
 
     }
 
