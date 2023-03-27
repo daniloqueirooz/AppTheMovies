@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appthemovies.models.Movie
+import com.example.appthemovies.services.MovieApi
 import com.example.appthemovies.services.MovieApiInterface
 import com.example.appthemovies.services.MovieApiService
 import kotlinx.coroutines.launch
@@ -32,11 +33,10 @@ class HomeFragmentViewModel : ViewModel() {
 
     private fun getMovieStatus() {
         viewModelScope.launch {
-
             _status.value = MovieApiStatus.LOADING
         }
         try {
-            // _getMovies.value =
+            _getMovies.value = MovieApi.retrofitService.getMovieList()
             _status.value = MovieApiStatus.DONE
         } catch (e: Exception) {
             _status.value = MovieApiStatus.ERROR
@@ -46,3 +46,5 @@ class HomeFragmentViewModel : ViewModel() {
     }
 
 }
+
+

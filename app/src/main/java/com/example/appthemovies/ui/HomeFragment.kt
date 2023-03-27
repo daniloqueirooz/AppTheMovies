@@ -42,19 +42,17 @@ class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
     private fun setupLisMovie() {
         binding.apply {
 
-            // rvMoviesList.adapter = TheMovieAdapter()
         }
 
     }
 
 }
 
-private fun getMovieData(callback: (List<Movie>) -> Unit) {
+/* private fun getMovieData(callback: (List<Movie>) -> Unit) {
+
     val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
     apiService.getMovieList().enqueue(object : Callback<MovieResponse> {
-        override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-
-        }
+        override fun onFailure(call: Call<MovieResponse>, t: Throwable) {}
 
         override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
             return callback(response.body()!!.movies)
@@ -65,6 +63,7 @@ private fun getMovieData(callback: (List<Movie>) -> Unit) {
 
 
 }
+ */
 
 
 
