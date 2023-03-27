@@ -2,68 +2,59 @@ package com.example.appthemovies.ui
 
 
 import android.os.Bundle
-import com.example.appthemovies.databinding.FragmentHomeBinding
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appthemovies.R
 import com.example.appthemovies.adapter.TheMovieAdapter
-import com.example.appthemovies.models.Movie
-import com.example.appthemovies.models.MovieResponse
+import com.example.appthemovies.databinding.FragmentHomeBinding
 import com.example.appthemovies.services.MovieApiInterface
-import com.example.appthemovies.services.MovieApiService
-import kotlinx.android.synthetic.main.fragment_home.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
 
-    private var _binding: FragmentHomeBinding? = null
-
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentHomeBinding
 
     private lateinit var viewModel: HomeFragmentViewModel
 
+    private val adapterMovie = TheMovieAdapter()
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentHomeBinding.bind(view)
-        viewModel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
-
+        val movieApiInterface = MovieApiInterface.create()
+        viewModel = ViewModelProvider(this, HomeFragmentViewModelFactory(movieApiInterface)).get(HomeFragmentViewModel::class.java)
+        viewModel.getMovieData()
         setupLisMovie()
-
-        rv_movies_list.setHasFixedSize(true)
-        getMovieData { movies: List<Movie> ->
-            rv_movies_list.adapter = TheMovieAdapter(movies)
+        viewModel.getMovies.observe(viewLifecycleOwner){
+            adapterMovie.update(it.results)
         }
     }
 
     private fun setupLisMovie() {
         binding.apply {
-
+            rvMoviesList.apply {
+                adapter = adapterMovie
+                val mLayoutManager = LinearLayoutManager(requireContext())
+                mLayoutManager.orientation = LinearLayoutManager.VERTICAL
+                layoutManager = mLayoutManager
+            }
         }
-
     }
-
 }
 
-/* private fun getMovieData(callback: (List<Movie>) -> Unit) {
 
-    val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-    apiService.getMovieList().enqueue(object : Callback<MovieResponse> {
-        override fun onFailure(call: Call<MovieResponse>, t: Throwable) {}
-
-        override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-            return callback(response.body()!!.movies)
-        }
-
-
-    })
-
-
-}
- */
 
 
 

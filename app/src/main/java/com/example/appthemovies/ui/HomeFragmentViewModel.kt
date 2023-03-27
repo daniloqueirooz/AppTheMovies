@@ -3,45 +3,35 @@ package com.example.appthemovies.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.appthemovies.models.Movie
-import com.example.appthemovies.services.MovieApi
+import com.example.appthemovies.models.MovieNowPlayingModel
 import com.example.appthemovies.services.MovieApiInterface
-import com.example.appthemovies.services.MovieApiService
-import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-enum class MovieApiStatus { LOADING, ERROR, DONE }
+class HomeFragmentViewModel(private val apiInterface: MovieApiInterface) : ViewModel() {
 
-class HomeFragmentViewModel : ViewModel() {
+    private val _getMovies = MutableLiveData<MovieNowPlayingModel>()
+    val getMovies: LiveData<MovieNowPlayingModel>
+        get() = _getMovies
 
-    private val _status = MutableLiveData<MovieApiStatus>()
+    val errorMessage = MutableLiveData<String>()
 
-    val status: LiveData<MovieApiStatus> = _status
 
-    private val _getMovies = MutableLiveData<List<Movie>>()
+    fun getMovieData() {
 
-    val getMovies: LiveData<List<Movie>> = _getMovies
+        apiInterface.getMovieNowPlayingList().enqueue(object : Callback<MovieNowPlayingModel> {
 
-    init {
-        initOne()
-    }
+            override fun onFailure(call: Call<MovieNowPlayingModel>, t: Throwable) {
+                errorMessage.postValue(t.message)
+            }
 
-    private fun initOne() = viewModelScope.launch {
-        getMovieStatus()
+            override fun onResponse(call: Call<MovieNowPlayingModel>, response: Response<MovieNowPlayingModel>) {
+                _getMovies.postValue(response.body())
+            }
 
-    }
+        })
 
-    private fun getMovieStatus() {
-        viewModelScope.launch {
-            _status.value = MovieApiStatus.LOADING
-        }
-        try {
-            _getMovies.value = MovieApi.retrofitService.getMovieList()
-            _status.value = MovieApiStatus.DONE
-        } catch (e: Exception) {
-            _status.value = MovieApiStatus.ERROR
-            _getMovies.value = listOf()
-        }
 
     }
 
