@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.appthemovies.services.MovieApiInterface
 
-class HomeFragmentViewModelFactory(private val movieApiInterface: MovieApiInterface) : ViewModelProvider.Factory {
+class HomeFragmentViewModelFactory(private val movieApiInterface: MovieApiInterface) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeFragmentViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

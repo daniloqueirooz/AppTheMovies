@@ -34,11 +34,13 @@ class HomeFragment : androidx.fragment.app.Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val movieApiInterface = MovieApiInterface.create()
-        viewModel = ViewModelProvider(this, HomeFragmentViewModelFactory(movieApiInterface)).get(HomeFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this, HomeFragmentViewModelFactory(movieApiInterface)).get(
+            HomeFragmentViewModel::class.java
+        )
         viewModel.getMovieData()
-        setupLisMovie()
-        viewModel.getMovies.observe(viewLifecycleOwner){
+        viewModel.getMovies.observe(viewLifecycleOwner) {
             adapterMovie.update(it.results)
+            setupLisMovie()
         }
     }
 

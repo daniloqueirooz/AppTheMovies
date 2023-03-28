@@ -14,7 +14,7 @@ interface MovieApiInterface {
     fun getMovieNowPlayingList(): Call<MovieNowPlayingModel>
 
     //https://api.themoviedb.org/3/movie/{372058}?api_key=<<api_key>>&language=en-US
-    //como passar um parametro na url pelo retrofit
+    //eu vou passar um parametro na url pelo retrofit
 
     companion object {
         private val retrofit: Retrofit = Retrofit.Builder()
