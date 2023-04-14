@@ -1,6 +1,6 @@
 # AppTheMovie
 
-### **Visão geral **
+### Visão geral:
 
 Este é um projeto simples no qual eu desenvolvi com a ideia de aprender/desenvolver mais sobre RecyclerView, Adapter, Fragment, Navigation, ViewModel e API.
 
